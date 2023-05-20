@@ -152,11 +152,13 @@ domId('btnThemNV').addEventListener('click', function () {
 
     var nhanVien = layThongTinNV(true);
 
-
-    dsnv.themNV(nhanVien);
-
-    renderTable(dsnv.arr);
-    setLocal();
+    if(nhanVien){
+        
+        dsnv.themNV(nhanVien);
+        
+        renderTable(dsnv.arr);
+        setLocal();
+    }
 
 
 });
