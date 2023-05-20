@@ -33,10 +33,10 @@ function layThongTinNV(add) {
     // tên nhân viên
     isValid &= validation.kiemTraChu(hoTen, 'tbTen', "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$", 'Tên nhân viên phải là chữ, không để trống')
     // email
-    isValid &= validation.kiemTraChu(email, 'tbEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email phải đúng định dạng, không để trống')
+    isValid &= validation.kiemTraChu(email, 'tbEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không hợp lệ')
     isValid &= validation.kiemTraChu(pass, 'tbMatKhau', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/, 'Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt), không để trống')
-    isValid &= validation.kiemTraChu(ngayLam, 'tbNgay', /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, 'Ngày làm không để trống')
-    isValid &= validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương cơ bản 1 000 000 - 20 000 000, không để trống')
+    isValid &= validation.kiemTraChu(ngayLam, 'tbNgay', /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, 'Ngày làm không hợp lệ')
+    isValid &= validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương không hợp lệ')
     isValid &= validation.kiemTraChucVu('chucvu', 'tbChucVu', 'Chức vụ phải chọn chức vụ hợp lệ (Giám đốc, Trưởng Phòng, Nhân Viên)')
     isValid &= validation.kiemTraGioLam(gioLam, 'tbGiolam', 'Số giờ làm trong tháng 80 - 200 giờ, không để trống')
 
