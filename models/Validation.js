@@ -1,4 +1,17 @@
 function Validation() {
+    this.kiemTraRong = function (value, errorId, mess) {
+        if (value === "" || value <= 0) {
+          //Sai
+          domId(errorId).style.display = "block";
+          domId(errorId).innerHTML = mess;
+          return false;
+        }
+    
+        //Dung
+        domId(errorId).style.display = "none";
+        domId(errorId).innerHTML = "";
+        return true;
+    }
     this.kiemTraKiTu = function (value, errorId, mess, min, max) {
         if (value.length >= min && value.length <= max) {
             domId(errorId).innerHTML = ''

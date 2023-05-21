@@ -18,7 +18,7 @@ function layThongTinNV(add) {
     var email = domId('email').value;
     var pass = domId('password').value;
     var ngayLam = domId('datepicker').value;
-    var luongCB = +domId('luongCB').value;
+    var luongCB = Number (domId('luongCB').value);
     var chucVu = domId('chucvu').value;
     var gioLam = domId('gioLam').value;
     // validation
@@ -28,17 +28,27 @@ function layThongTinNV(add) {
     // tai khoản
     if (add) {
 
-        isValid &= validation.kiemTraKiTu(taiKhoan, 'tbTKNV', ' Tài khoản tối đa 4 - 6 ký số, không để trống', 4, 6) && validation.kiemTraTonTai(taiKhoan, 'tbTKNV', dsnv.arr, 'Tài khoản đã tồn tại');
+        isValid &= validation.kiemTraRong(taiKhoan, 'tbTKNV', 'Vui lòng nhập ký tự') && validation.kiemTraKiTu(taiKhoan, 'tbTKNV', ' Tài khoản tối đa 4 - 6 ký số, không để trống', 4, 6) && validation.kiemTraTonTai(taiKhoan, 'tbTKNV', dsnv.arr, 'Tài khoản đã tồn tại');
     }
     // tên nhân viên
-    isValid &= validation.kiemTraChu(hoTen, 'tbTen', "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$", 'Tên nhân viên phải là chữ, không để trống')
+    isValid &= validation.kiemTraRong(hoTen, 'tbTen', 'Vui lòng nhập ký tự') && validation.kiemTraChu(hoTen, 'tbTen', "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$", 'Tên nhân viên phải là chữ')
     // email
-    isValid &= validation.kiemTraChu(email, 'tbEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không hợp lệ')
-    isValid &= validation.kiemTraChu(pass, 'tbMatKhau', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/, 'Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt), không để trống')
-    isValid &= validation.kiemTraChu(ngayLam, 'tbNgay', /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, 'Ngày làm không hợp lệ')
-    isValid &= validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương không hợp lệ')
-    isValid &= validation.kiemTraChucVu('chucvu', 'tbChucVu', 'Chức vụ phải chọn chức vụ hợp lệ (Giám đốc, Trưởng Phòng, Nhân Viên)')
-    isValid &= validation.kiemTraGioLam(gioLam, 'tbGiolam', 'Số giờ làm trong tháng 80 - 200 giờ, không để trống')
+    isValid &= validation.kiemTraRong(email, 'tbEmail', 'Vui lòng nhập ký tự') && validation.kiemTraChu(email, 'tbEmail', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không hợp lệ')
+
+
+    isValid &= validation.kiemTraRong(pass, 'tbMatKhau', 'Vui lòng nhập ký tự') && validation.kiemTraChu(pass, 'tbMatKhau', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/, 'Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)')
+
+
+    isValid &= validation.kiemTraRong(ngayLam, 'tbNgay', 'Vui lòng nhập ký tự') && validation.kiemTraChu(ngayLam, 'tbNgay', /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, 'Ngày làm không hợp lệ')
+
+    isValid &= validation.kiemTraRong(luongCB, 'tbLuongCB', 'Vui lòng nhập ký tự')
+    // && validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương không hợp lệ')
+
+
+    isValid &= validation.kiemTraRong(chucVu, 'tbChucVu', 'Vui lòng nhập ký tự') && validation.kiemTraChucVu('chucvu', 'tbChucVu', 'Chức vụ phải chọn chức vụ hợp lệ (Giám đốc, Trưởng Phòng, Nhân Viên)')
+
+
+    isValid &= validation.kiemTraRong(gioLam, 'tbGiolam', 'Vui lòng nhập ký tự') && validation.kiemTraGioLam(gioLam, 'tbGiolam', 'Số giờ làm trong tháng 80 - 200 giờ')
 
 
 
@@ -127,7 +137,7 @@ domId('btnThem').addEventListener('click', function () {
     domId('password').value = '';
     domId('datepicker').value = '';
     domId('luongCB').value = '';
-    domId('chucvu').value ='Chọn chức vụ';
+    domId('chucvu').value = 'Chọn chức vụ';
     domId('gioLam').value = '';
 });
 
@@ -152,10 +162,10 @@ domId('btnThemNV').addEventListener('click', function () {
 
     var nhanVien = layThongTinNV(true);
 
-    if(nhanVien){
-        
+    if (nhanVien) {
+
         dsnv.themNV(nhanVien);
-        
+
         renderTable(dsnv.arr);
         setLocal();
     }
