@@ -42,7 +42,7 @@ function layThongTinNV(add) {
     isValid &= validation.kiemTraRong(ngayLam, 'tbNgay', 'Vui lòng nhập ký tự') && validation.kiemTraChu(ngayLam, 'tbNgay', /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/, 'Ngày làm không hợp lệ')
 
     isValid &= validation.kiemTraRong(luongCB, 'tbLuongCB', 'Vui lòng nhập ký tự')
-    // && validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương không hợp lệ')
+    && validation.kiemTraLuong(luongCB, 'tbLuongCB', 'Lương không hợp lệ')
 
 
     isValid &= validation.kiemTraRong(chucVu, 'tbChucVu', 'Vui lòng nhập ký tự') && validation.kiemTraChucVu('chucvu', 'tbChucVu', 'Chức vụ phải chọn chức vụ hợp lệ (Giám đốc, Trưởng Phòng, Nhân Viên)')
